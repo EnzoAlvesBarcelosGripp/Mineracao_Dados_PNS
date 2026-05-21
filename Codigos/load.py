@@ -1,15 +1,20 @@
 # Atributos do modelo
 
 Atributos_Categoricos = [
+    'P038',
+    'E001',
+    'E002',
+    'E003',
+    'E011',
+    'E022',
+    'Q074',
     "J01802",
     "J023",
     "J024",
-    "Q03001",
     "L01701",
-    "L01702",
-    "Q092",
-    "Q09201",
-    "Q09202",
+    'R002010',
+    'R010',
+    'R025',
     "R026",
     'R028',
     "R029",
@@ -31,9 +36,9 @@ Atributos_Categoricos = [
     "P034",
     "P039",
     "P044",
+    'P04401',
     "P04405",
     "P04406",
-    "P04801",
     "P02102",
     "P02401",
     "P03201",
@@ -97,7 +102,9 @@ Atributos_Numericos = [
     "P03904", # Exercicio dias
     "P03905", # Exercicio horas
     "P03906", # Exercicio min
+    'P006', # Alimentação dias
     "P00901", # Alimentação dias
+    'P01001', # Alimentação dias
     "P01101", # Alimentação dias
     "P013", # Alimentação dias
     "P015", # Alimentação dias
@@ -118,12 +125,3 @@ Atributos_Numericos = [
     "C008" # Idade, Não retirar outliers - Não existe
 ]
 
-def outlier_count(df):
-    iqr = df.quantile(0.75) - df.quantile(0.25)
-
-    iqr_outliers_Inf = (df < df.quantile(0.25) - 1.5 * iqr).sum() 
-    iqr_outliers_Sup = (df > df.quantile(0.75) + 1.5 * iqr).sum()
-
-    quantidade_outliers = ((df<iqr_outliers_Inf) | (df>iqr_outliers_Sup)).sum()
-
-    print(f"Quantidade de outliers: {quantidade_outliers}")
